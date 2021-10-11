@@ -49,7 +49,8 @@ INSTALLED_APPS += [
 ]
 
 INSTALLED_APPS += [
-    "leads"
+    "leads",
+    "frontend"
 ]
 
 MIDDLEWARE = [
