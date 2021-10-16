@@ -3,8 +3,14 @@ from rest_framework import viewsets, permissions
 from leads.serializer import LeadSerializer
 
 class LeadViewSet(viewsets.ModelViewSet):
-  queryset = Lead.objects.all()
   permission_classes = [
-    permissions.AllowAny
+    permissions.IsAuthenticated
   ]
+
   serializer_class = LeadSerializer
+
+  def get_queryset(self):
+      return self.request.user.all()
+
+  def perform_create(self, serializer):
+    serializer.save(owner=self.request.user)
