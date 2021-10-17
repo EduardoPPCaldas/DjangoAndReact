@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 export class Register extends Component {
   state = {
@@ -78,4 +79,8 @@ export class Register extends Component {
   }
 }
 
-export default Register
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Register)

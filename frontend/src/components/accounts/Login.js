@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 export class Login extends Component {
   state = {
@@ -43,7 +44,7 @@ export class Login extends Component {
             </div>
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
-                Register
+                Login
               </button>
             </div>
             <p>
@@ -56,4 +57,8 @@ export class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Login)
